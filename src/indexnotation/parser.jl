@@ -7,11 +7,10 @@ mutable struct TensorParser
     function TensorParser()
         preprocessors = [normalizeindices,
                             expandconj,
-                            nconindexcompletion,
-                            extracttensorobjects]
+                            nconindexcompletion]
         contractiontreebuilder = defaulttreebuilder
         contractiontreesorter = defaulttreesorter
-        postprocessors = [_flatten, removelinenumbernode, addtensoroperations]
+        postprocessors = [extracttensorobjects, _flatten, removelinenumbernode, addtensoroperations]
         return new(preprocessors,
                     contractiontreebuilder,
                     contractiontreesorter,
